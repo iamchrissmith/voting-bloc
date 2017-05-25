@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_user
   before_action :set_user, with: [:edit, :update]
 
   def show
@@ -33,6 +34,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+   def require_user
+     redirect_to login_path unless current_user
+   end
 
    def user_params
      params.require(:user).permit(:first_name, :last_name, :email, :password)
