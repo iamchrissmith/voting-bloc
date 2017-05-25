@@ -32,4 +32,16 @@ RSpec.describe "an admin can view all users" do
     expect(page).to have_content "All Users"
     expect(page).to have_css(".btn-delete", count: 3)
   end
+
+  context "if a regular user tries to visit the page" do
+    it "they are sent to the a 404 page" do
+      user = create(:user)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit admin_users_path
+
+      expect(page).to have_content "The page you were looking for doesn't exist."
+    end
+  end
 end
