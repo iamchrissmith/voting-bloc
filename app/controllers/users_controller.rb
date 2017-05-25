@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user
+  before_action :require_user, except: [:new, :create]
   before_action :set_user, with: [:edit, :update]
 
   def show
