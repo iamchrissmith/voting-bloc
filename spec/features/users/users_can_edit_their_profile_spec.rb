@@ -30,6 +30,6 @@ RSpec.describe "a user can edit their profile" do
     expect(page).to have_content "new_email@address.com"
     expect(page).not_to have_content orig_email
     expect(page).to have_content "Logout"
-    expect(page).to have_link "Edit Your Profile", edit_user_path(user)
+    expect(page).to have_link "Edit Your Profile", href: edit_user_path(user)
   end
 end
