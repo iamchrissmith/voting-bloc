@@ -6,8 +6,8 @@ RSpec.describe "User logs in" do
 
     visit login_path
     within("form") do
-      fill_in "email", with: user.email
-      fill_in "password", with: user.password
+      fill_in "Email", with: user.email
+      fill_in "Password", with: user.password
       click_on "Login"
     end
 
@@ -16,4 +16,6 @@ RSpec.describe "User logs in" do
     expect(page).to have_content("Welcome, #{user.full_name}!")
     expect(page).to have_content("Logout")
   end
+
+  it "they see error messages for incorrect logins"
 end

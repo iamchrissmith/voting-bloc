@@ -1,0 +1,9 @@
+%h1 Login to Access your Voting Bloc
+
+.login
+  = form_for(:session, url: login_path) do |f|
+    =f.label :email
+    =f.text_field :email
+    =f.label :password
+    =f.text_field :password
+    =f.submit "Login"
