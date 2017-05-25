@@ -8,6 +8,8 @@ Voting Bloc is a rails application to track and vote in elections build in Ruby 
 - [X] There are three user roles: admin, candidates and users
   - Users can
     - [X] login,
+    - [ ] logout,
+    - [ ] sign up for an account
     - [ ] vote in an active election,
     - [ ] and put their name forward to run (i.e. change their type into Candidate)
   - [ ] Candidates can do all of the above and

@@ -54,6 +54,8 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'pry-rails'
+  gem 'pry-state'
+  gem 'pry-byebug'
   gem 'database_cleaner'
   gem 'erb2haml'
 end

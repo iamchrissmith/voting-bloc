@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
   def new
+    # binding.pry
+    redirect_to user_path(current_user) if current_user
   end
 
   def create
@@ -11,5 +13,12 @@ class SessionsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    reset_session
+    flash[:success] = "Successfully logged out!"
+    # binding.pry
+    redirect_to login_path
   end
 end
