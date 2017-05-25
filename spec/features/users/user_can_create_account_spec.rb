@@ -12,6 +12,7 @@ RSpec.describe "a user can be created" do
     click_button "Create Account"
 
     expect(page).to have_content("Welcome, Test Test!")
+    expect(page).to have_content("Account created!")
     expect(page).to have_link "Logout", logout_path
   end
 end
