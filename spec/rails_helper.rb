@@ -9,6 +9,7 @@ require 'rspec/rails'
 require 'capybara/rails'
 # Require shoulda-matchers and config it with Rails and RSpec
 require 'shoulda-matchers'
+require 'support/factory_girl'
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
