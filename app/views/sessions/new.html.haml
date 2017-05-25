@@ -2,6 +2,8 @@
 
 .login
   = form_for(:session, url: login_path) do |f|
+    - flash.each do |type, message|
+      = content_tag :div, message, class: "alert alert-#{type}"
     =f.label :email
     =f.text_field :email
     =f.label :password
