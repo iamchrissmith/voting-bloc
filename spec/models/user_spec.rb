@@ -38,8 +38,8 @@ RSpec.describe User, type: :model do
       user = create(:user)
 
       expect(user.role).to eq 'user'
-      expect(candidate).not_to be_admin
-      expect(candidate).not_to be_candidate
+      expect(user).not_to be_admin
+      expect(user).not_to be_candidate
       expect(user).to be_user
     end
 
@@ -63,6 +63,10 @@ RSpec.describe User, type: :model do
   end
 
   describe ".full_name" do
-    it "returns the first and last name"
+    it "returns the first and last name" do
+      user = create(:user)
+
+      expect(user.full_name).to eq "#{user.first_name} #{user.last_name}"
+    end
   end
 end
