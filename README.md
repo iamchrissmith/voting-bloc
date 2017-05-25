@@ -1,11 +1,13 @@
 # README
 
+[![Build Status](https://semaphoreci.com/api/v1/iamchrissmith/voting-bloc/branches/master/badge.svg)](https://semaphoreci.com/iamchrissmith/voting-bloc)
+
 Voting Bloc is a rails application to track and vote in elections build in Ruby on Rails
 
 ## Users
 - [X] There are three user roles: admin, candidates and users
   - Users can
-    - [ ] login,
+    - [X] login,
     - [ ] vote in an active election,
     - [ ] and put their name forward to run (i.e. change their type into Candidate)
   - [ ] Candidates can do all of the above and
