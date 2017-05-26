@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "an admin can view all users" do
   let!(:user_1) { create(:user) }
   let!(:user_2) { create(:user) }
-  let!(:user_3) { create(:user) }
+  let!(:candidate_1) { create(:candidate) }
 
   it "they can see a page with all users" do
     admin = create(:admin)
@@ -15,10 +15,11 @@ RSpec.describe "an admin can view all users" do
     expect(page).to have_content "All Users"
     expect(page).to have_content user_1.full_name
     expect(page).to have_content user_2.full_name
-    expect(page).to have_content user_3.full_name
+    expect(page).to have_content candidate_1.full_name
     expect(page).to have_css(".btn-view", count: 4)
-    expect(page).to have_content("user", count: 3)
+    expect(page).to have_content("user", count: 2)
     expect(page).to have_content("admin", count: 1)
+    expect(page).to have_content("candidate", count: 1)
   end
 
   it "they can edit themselves" do
