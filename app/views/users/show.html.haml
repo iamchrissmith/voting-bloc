@@ -1,11 +1,5 @@
 %h1 Your Profile
 
-.panel
-  %h2 Your Information
-  %ul
-    %li= "Email: #{current_user.email}"
-  %p= link_to "Edit Your Profile", edit_user_path(current_user)
+= render partial: "users/role_partials/show/#{current_user.role}"
 
-%h2 Your Voting History
-
-%h2 Your Candidate History
+%p= link_to "Edit Your Profile", edit_user_path(current_user)

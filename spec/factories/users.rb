@@ -14,6 +14,7 @@ FactoryGirl.define do
     email
     password "pass"
     role 1
+    profile "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
   end
 
   factory :admin, class: User do

@@ -1,15 +1,4 @@
 = form_for @user do |f|
   = render partial: "shared/errors", locals: { target: @user }
-  .form-group
-    = f.label :first_name, "First Name"
-    = f.text_field :first_name
-  .form-group
-    = f.label :last_name, "Last Name"
-    = f.text_field :last_name
-  .form-group
-    = f.label :email
-    = f.text_field :email
-  .form-group
-    = f.label :password
-    = f.text_field :password
+  = render partial: "users/role_partials/edit/#{@user.role}", locals: {:f=> f}
   = f.submit

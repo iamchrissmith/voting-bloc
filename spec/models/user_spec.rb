@@ -50,6 +50,7 @@ RSpec.describe User, type: :model do
       expect(candidate).not_to be_user
       expect(candidate).not_to be_admin
       expect(candidate).to be_candidate
+      expect(candidate.profile).not_to be_nil
     end
 
     it "creates a user as an admin" do
