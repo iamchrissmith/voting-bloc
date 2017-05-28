@@ -1,0 +1,16 @@
+%nav.navbar.navbar-toggleable-md.navbar-inverse.bg-inverse.fixed-top
+  .navbar-header.container
+    %ul.nav.navbar-nav.mr-auto
+      %li.nav-item
+        = link_to root_path, {class: "navbar-brand nav-link"} do
+          %span.glyphicon.glyphicon-briefcase
+          Voting Bloc
+      - if current_user
+        %li.nav-item= link_to"Upcoming Votes", '#', {class: "nav-link"}
+        %li.nav-item= link_to "Your Profile", user_path(current_user), {class: "nav-link"}
+    - if current_user
+      .user-logged-in
+        = "Welcome, #{current_user.full_name}!"
+        = link_to "Logout", logout_path, method: :delete
+        -# - else
+        -#   %li= link_to "Login", login_path

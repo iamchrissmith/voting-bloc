@@ -1,11 +1,11 @@
-%h1 Login to Access your Voting Bloc
 
-.login
+.login.form-signin.col-lg-6.offset-lg-3.col-md-12
+  %h2.form-signin-heading Login to Access your Voting Bloc
   = form_for(:session, url: login_path) do |f|
-    - flash.each do |type, message|
-      = content_tag :div, message, class: "alert alert-#{type}"
-    =f.label :email
-    =f.text_field :email
-    =f.label :password
-    =f.text_field :password
-    =f.submit "Login"
+    .form-group
+      =f.label(:email, class:"sr-only")
+      =f.text_field(:email, class:"form-control", placeholder: "Email")
+    .form-group
+      =f.label(:password, class:"sr-only")
+      =f.text_field(:password, class:"form-control", placeholder: "Password")
+    =f.submit("Login", class:"btn btn-lg btn-primary btn-block")

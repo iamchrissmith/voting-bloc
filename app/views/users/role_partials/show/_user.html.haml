@@ -1,7 +1,12 @@
-.panel
-  %h2 Your Information
-  %ul
-    %li= "Email: #{current_user.email}"
-
-.panel
-  %h2 Your Voting History
+.row
+  .col-md-6
+    .card
+      %h2.card-header Your Voting History
+      .card-block
+        %p Lorem ipsum...
+  .col-md-6
+    .card
+      %h2.card-header Your Information
+      .card-block
+        %ul
+          %li= "Email: #{current_user.email}"

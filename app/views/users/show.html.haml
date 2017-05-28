@@ -1,5 +1,6 @@
-%h1 Your Profile
+.container.bg-white.page-container
+  %h1 Your Profile
 
-= render partial: "users/role_partials/show/#{current_user.role}"
+  = render partial: "users/role_partials/show/#{current_user.role}"
 
-%p= link_to "Edit Your Profile", edit_user_path(current_user)
+  %p= link_to "Edit Your Profile", edit_user_path(current_user)
