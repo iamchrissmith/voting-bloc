@@ -26,7 +26,7 @@ RSpec.describe User, type: :model do
     end
 
     context "with valid attributes" do
-      it "user is valid with all require attributes" do
+      it "user is valid with all required attributes" do
         user = build(:user)
         expect(user).to be_valid
       end

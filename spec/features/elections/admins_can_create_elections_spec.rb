@@ -13,9 +13,10 @@ RSpec.describe "an admin can create an election" do
 
     click_link "New Election"
 
-    fill_in "Start Date", with: "01/01/17"
-    fill_in "End Date", with: "06/30/17"
+    fill_in "Start date", with: "01/01/17"
+    fill_in "End date", with: "06/30/17"
     fill_in "Topic", with: "Test Election"
+    fill_in "Description", with: "Lorem Ipsum..."
     page.check candidate_1.full_name
 
     expect(page).not_to have_content user_1.full_name
@@ -23,7 +24,7 @@ RSpec.describe "an admin can create an election" do
     click_button "Create Election"
 
     expect(current_path).to eq elections_path
-    expect(page).to have_content "Election create!"
+    expect(page).to have_content "Election created!"
   end
 
   context "when not an admin" do

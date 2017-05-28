@@ -1,0 +1,26 @@
+.container.bg-white.page-container
+  %h1 Active Elections
+
+  %p= link_to "New Election", new_admin_election_path
+
+  %table.table.table-striped
+    %thead
+      %tr.thead-inverse
+        %th Topic
+        %th Start Date
+        %th End Date
+        %th
+        %th
+    %tbody
+      - @elections.each do |election|
+        %tr
+          %td= election.topic
+          %td= election.start_date
+          %td= election.end_date
+          %td= link_to "View", election, {class: "btn btn-secondary btn-view"}
+          %td
+            - if current_user.admin?
+              = link_to "Edit", edit_admin_election_path(election), {class: "btn btn-primary btn-edit"}
+          %td
+            - unless election.started?
+              = link_to "Delete", admin_election_path(election), {method: :delete, class: "btn btn-danger btn-delete"}

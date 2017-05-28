@@ -64,4 +64,5 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'database_cleaner'
   gem 'erb2haml'
+  gem 'timecop'
 end

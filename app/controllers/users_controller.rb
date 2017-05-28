@@ -35,10 +35,6 @@ class UsersController < ApplicationController
 
   private
 
-   def require_user
-     redirect_to login_path unless current_user
-   end
-
    def user_params
      params.require(:user).permit(:first_name, :last_name, :email, :password, :profile)
    end

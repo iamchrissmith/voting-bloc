@@ -2,14 +2,14 @@ FactoryGirl.define do
   sequence(:email) { |n| "first.last#{n}@test.com"}
 
   factory :user do
-    first_name "First"
+    first_name "User First"
     last_name "Last"
     email
     password "pass"
   end
 
   factory :candidate, class: User do
-    first_name "First"
+    first_name "Candidate First"
     last_name "Last"
     email
     password "pass"
@@ -18,7 +18,7 @@ FactoryGirl.define do
   end
 
   factory :admin, class: User do
-    first_name "First"
+    first_name "Admin First"
     last_name "Last"
     email
     password "pass"

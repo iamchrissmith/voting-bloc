@@ -6,6 +6,9 @@ class User < ApplicationRecord
                     uniqueness: true
   enum role: [:user, :candidate, :admin]
 
+  has_many :ballots
+  has_many :elections, through: :ballots
+
   def full_name
     "#{first_name} #{last_name}"
 

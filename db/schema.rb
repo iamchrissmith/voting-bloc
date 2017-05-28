@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526181840) do
+ActiveRecord::Schema.define(version: 20170528211944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ballots", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "election_id"
+    t.index ["election_id"], name: "index_ballots_on_election_id"
+    t.index ["user_id"], name: "index_ballots_on_user_id"
+  end
+
+  create_table "elections", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.string "topic"
+    t.text "description"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
@@ -24,4 +38,6 @@ ActiveRecord::Schema.define(version: 20170526181840) do
     t.text "profile"
   end
 
+  add_foreign_key "ballots", "elections"
+  add_foreign_key "ballots", "users"
 end
