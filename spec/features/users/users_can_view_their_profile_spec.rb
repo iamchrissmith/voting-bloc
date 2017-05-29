@@ -56,4 +56,40 @@ RSpec.describe "a user can see their profile" do
     expect(page).to have_content "Your Candidate History"
     expect(page).to have_link "Edit Your Profile", href: edit_user_path(candidate)
   end
+
+  it "a user can decide to become a candidate" do
+    user = create(:user)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit user_path(user)
+
+    expect(page).to have_link "Become a Candidate", href: user_become_candidate_path(user)
+
+    click_link "Become a Candidate"
+
+    expect(current_path).to eq user_path(user)
+    expect(page).to have_content "You have been made into a candidate.  Now you can run in elections."
+    expect(page).to have_content "Your Candidate Profile"
+  end
+
+  it "an admin cannot become a candidate" do
+    admin = create(:admin)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit user_path(admin)
+
+    expect(page).not_to have_link "Become a Candidate", href: user_become_candidate_path(admin)
+  end
+
+  it "a candidate cannot become a candidate" do
+    candidate = create(:candidate)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(candidate)
+
+    visit user_path(candidate)
+
+    expect(page).not_to have_link "Become a Candidate", href: user_become_candidate_path(candidate)
+  end
 end

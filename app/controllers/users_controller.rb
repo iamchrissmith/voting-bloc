@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_user, except: [:new, :create]
-  before_action :set_user, with: [:edit, :update]
+  before_action :set_user, with: [:edit, :update, :become_candidate]
 
   def show
   end
@@ -30,6 +30,17 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       render :edit
+    end
+  end
+
+  def become_candidate
+    if @user.user?
+      @user.candidate!
+      flash[:success] = "You have been made into a candidate.  Now you can run in elections."
+      redirect_to @user
+    else
+      flash[:error] = "Only Users Can Become Candidates"
+      redirect_to @user
     end
   end
 

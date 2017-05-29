@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users, except: [:index, :destroy]
+  resources :users, except: [:index, :destroy] do
+    put :become_candidate
+  end
   resources :elections, only: [:index, :show]
 
   namespace :admin do
