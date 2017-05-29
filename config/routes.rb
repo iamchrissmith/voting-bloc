@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   end
 
   namespace :candidates do
-    post '/:user_id/elections/:id', to: 'election#update'
+    post '/:user_id/elections/:id', to: 'elections#update'
   end
 end

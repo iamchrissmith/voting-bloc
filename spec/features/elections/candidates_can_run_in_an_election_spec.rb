@@ -12,6 +12,12 @@ RSpec.describe "candidates can run in an election" do
           visit election_path (election)
 
           expect(page).to have_content "Run in this Election"
+
+          click_link "Run in this Election"
+
+          expect(current_path).to eq election_path(election)
+          expect(page).to have_content "You are now running in this election!"
+          expect(page).to have_content candidate.full_name
         end
       end
     end
@@ -36,7 +42,7 @@ RSpec.describe "candidates can run in an election" do
         election = create(:election)
 
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(candidate)
-        
+
         Timecop.freeze(election.start_date + 1) do
           visit election_path (election)
 

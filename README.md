@@ -14,7 +14,7 @@ Voting Bloc is a rails application to track and vote in elections build in Ruby 
     - [ ] change their role into Candidate
   - [X] Candidates can do all of the above and
      - [X] have access to edit their candidate profile
-     - [ ] can put their name forward to run
+     - [X] can put their name forward to run
   - Admins can Delete all
    - [X] users,
    - [X] candidates, and
@@ -27,7 +27,7 @@ Voting Bloc is a rails application to track and vote in elections build in Ruby 
 - [ ] All users should only be able to vote once in each election
 - [ ] Once they have voted, users should be able to see how they voted in all past elections
 - [X] Elections have a start and end date.  
-- [ ] Before they start any candidate or user can add their name and no one can vote.  
+- [X] Before they start any candidate can add their name
 - [X] Once they are started, admins can edit the ballot
 - [ ] and all user types can vote (once).
 

@@ -5,7 +5,7 @@
 
   %h2 Candidates
   - if @election.can_run?(current_user)
-    %p= link_to "Run in this Election", {controller: "candidates/election", action: "update", user_id: current_user.id}, {method: :post}
+    %p= link_to "Run in this Election", {controller: "candidates/elections", action: "update", user_id: current_user.id}, {method: :post}
   %ul.list-group
     - @election.candidates.each do |candidate|
       %li.list-group-item
