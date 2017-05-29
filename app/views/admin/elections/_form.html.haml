@@ -14,5 +14,5 @@
     = f.text_area :description
   .form-group
     %p Select Candidates to Participate:
-    = f.collection_check_boxes(:user_ids, @candidates, :id, :full_name)
+    = f.collection_check_boxes(:candidate_ids, @candidates, :id, :full_name)
   = f.submit

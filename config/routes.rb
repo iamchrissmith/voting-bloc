@@ -11,4 +11,8 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :destroy]
     resources :elections, only: [:new, :create, :destroy, :edit]
   end
+
+  namespace :candidates do
+    post '/:user_id/elections/:id', to: 'election#update'
+  end
 end

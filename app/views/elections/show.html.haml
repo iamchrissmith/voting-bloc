@@ -1,0 +1,14 @@
+.container.bg-white.page-container
+  %h1= @election.topic
+
+  %p= @election.description
+
+  %h2 Candidates
+  - if @election.can_run?(current_user)
+    %p= link_to "Run in this Election", {controller: "candidates/election", action: "update", user_id: current_user.id}, {method: :post}
+  %ul.list-group
+    - @election.candidates.each do |candidate|
+      %li.list-group-item
+        = candidate.full_name
+
+  %p= link_to "All Elections", elections_path

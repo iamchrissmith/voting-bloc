@@ -27,9 +27,9 @@ RSpec.describe Election, type: :model do
   end
 
   describe "relationships" do
-    it "has many users" do
+    it "has many users as candidates" do
       election = create(:election)
-      expect(election).to respond_to(:users)
+      expect(election).to respond_to(:candidates)
     end
   end
 
