@@ -23,5 +23,5 @@
             - if current_user.admin?
               = link_to "Edit", edit_admin_election_path(election), {class: "btn btn-primary btn-edit"}
           %td
-            - unless election.started?
+            - if election.can_be_deleted?(current_user)
               = link_to "Delete", admin_election_path(election), {method: :delete, class: "btn btn-danger btn-delete"}
