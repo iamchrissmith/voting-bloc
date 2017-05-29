@@ -1,7 +1,9 @@
 class Admin::ElectionsController < Admin::BaseController
+  before_action :get_election, only: [:destroy, :edit, :update]
+  before_action :get_candidates, only: [:new, :edit]
+
   def new
     @election = Election.new
-    @candidates = User.candidate
   end
 
   def create
@@ -15,10 +17,22 @@ class Admin::ElectionsController < Admin::BaseController
   end
 
   def destroy
-    @election = Election.find(params[:id])
     @election.destroy
     flash[:success] = "Election '#{@election.topic}' Deleted!"
     redirect_to elections_path
+  end
+
+  def edit
+  end
+
+  def update
+    @election.update(election_params)
+    if @election.save
+      flash[:success] = "Election Updated!"
+      redirect_to @election
+    else
+      render :edit
+    end
   end
 
   private
@@ -26,6 +40,14 @@ class Admin::ElectionsController < Admin::BaseController
    def election_params
      params[:election][:start_date] = Date.strptime(params[:election][:start_date],'%Y-%m-%d')
      params[:election][:end_date] = Date.strptime(params[:election][:end_date],'%Y-%m-%d')
-     params.require(:election).permit(:start_date, :end_date, :topic, :description, user_ids:[])
+     params.require(:election).permit(:start_date, :end_date, :topic, :description, candidate_ids:[])
+   end
+
+   def get_election
+     @election = Election.find(params[:id])
+   end
+
+   def get_candidates
+     @candidates = User.candidate
    end
 end

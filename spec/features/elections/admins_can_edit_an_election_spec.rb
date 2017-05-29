@@ -1,9 +1,34 @@
 require 'rails_helper'
 
 RSpec.describe "an admin can edit an election" do
-  context "possible before the election started" do
+  context "before the election started" do
     context "when viewed from the elections index page" do
-      it "admins can edit election"
+      it "admins can edit election" do
+        admin = create(:admin)
+        candidate = create(:candidate)
+        election = create(:election)
+
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+        Timecop.freeze(election.start_date - 1) do
+          visit elections_path
+
+          click_link "Edit"
+
+          expect(current_path).to eq edit_admin_election_path(election)
+
+          fill_in "Topic", with: "New Topic"
+          fill_in "Description", with: "New Description"
+          page.check candidate.full_name
+
+          click_button "Update Election"
+
+          expect(page).to have_content "Election Updated!"
+          expect(page).to have_content "New Topic"
+          expect(page).to have_content "New Description"
+          expect(page).to have_content candidate.full_name
+        end
+      end
       it "users cannot edit election" do
         user = create(:user)
         election = create(:election)
@@ -63,13 +88,36 @@ RSpec.describe "an admin can edit an election" do
         end
       end
     end
+  end
+  context "after the election started" do
+    context "when viewed from the elections index page" do
+      it "admins cannot edit election" do
+        admin = create(:admin)
+        election = create(:election)
 
-    context "not possible before the election started" do
-      context "when viewed from the elections index page" do
-        it "admins cannot edit election"
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+        Timecop.freeze(election.start_date + 1) do
+          visit elections_path
+
+          expect(current_path).to eq elections_path
+          expect(page).not_to have_link "Edit", href: edit_admin_election_path(election)
+        end
       end
-      context "when viewed from the elections show page" do
-        it "admins cannot edit election"
+    end
+
+    context "when viewed from the elections show page" do
+      it "admins cannot edit election" do
+        admin = create(:admin)
+        election = create(:election)
+
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+        Timecop.freeze(election.start_date + 1) do
+          visit election_path(election)
+
+          expect(page).not_to have_link "Edit", href: edit_admin_election_path(election)
+        end
       end
     end
   end

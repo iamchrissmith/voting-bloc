@@ -135,4 +135,35 @@ RSpec.describe Election, type: :model do
       end
     end
   end
+
+  describe ".can_be_edited?" do
+    it "returns true if not started and user is admin" do
+      admin = create(:admin)
+      election = create(:election)
+
+      Timecop.freeze(election.start_date - 1) do
+        expect(election.can_be_edited?(admin)).to be true
+      end
+    end
+
+    it "returns false if started and user is admin" do
+      admin = create(:admin)
+      election = create(:election)
+
+      Timecop.freeze(election.start_date + 1) do
+        expect(election.can_be_edited?(admin)).to be false
+      end
+    end
+
+    it "returns false if not started and user is not admin" do
+      candidate = create(:candidate)
+      user = create(:user)
+      election = create(:election)
+
+      Timecop.freeze(election.start_date - 1) do
+        expect(election.can_be_edited?(candidate)).to be false
+        expect(election.can_be_edited?(user)).to be false
+      end
+    end
+  end
 end

@@ -20,7 +20,7 @@
           %td= election.end_date
           %td= link_to "View", election, {class: "btn btn-secondary btn-view"}
           %td
-            - if current_user.admin?
+            - if election.can_be_edited?(current_user)
               = link_to "Edit", edit_admin_election_path(election), {class: "btn btn-primary btn-edit"}
           %td
             - if election.can_be_deleted?(current_user)

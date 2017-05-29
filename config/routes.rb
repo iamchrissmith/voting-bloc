@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users, except: [:index, :destroy]
-  resources :elections, except: [:new, :create, :destroy, :edit]
+  resources :elections, only: [:index, :show]
 
   namespace :admin do
     resources :users, only: [:index, :destroy]
-    resources :elections, only: [:new, :create, :destroy, :edit]
+    resources :elections, only: [:new, :create, :destroy, :edit, :update]
   end
 
   namespace :candidates do

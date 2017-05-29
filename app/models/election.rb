@@ -19,6 +19,16 @@ class Election < ApplicationRecord
   end
 
   def can_be_deleted?(user)
-    !started? && user.admin?
+    not_started_and_admin?(user)
   end
+
+  def can_be_edited?(user)
+    not_started_and_admin?(user)
+  end
+
+  private
+
+   def not_started_and_admin?(user)
+     !started? && user.admin?
+   end
 end
