@@ -17,8 +17,8 @@ class Admin::ElectionsController < Admin::BaseController
   private
 
    def election_params
-     params[:election][:start_date] = Date.strptime(params[:election][:start_date],'%m/%d/%y')
-     params[:election][:end_date] = Date.strptime(params[:election][:end_date],'%m/%d/%y')
+     params[:election][:start_date] = Date.strptime(params[:election][:start_date],'%Y-%m-%d')
+     params[:election][:end_date] = Date.strptime(params[:election][:end_date],'%Y-%m-%d')
      params.require(:election).permit(:start_date, :end_date, :topic, :description, user_ids:[])
    end
 end
