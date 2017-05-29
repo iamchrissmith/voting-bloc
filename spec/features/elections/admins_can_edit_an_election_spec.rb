@@ -59,7 +59,32 @@ RSpec.describe "an admin can edit an election" do
     end
 
     context "when viewed from the elections show page" do
-      it "admins can edit election"
+      it "admins can edit election" do
+        admin = create(:admin)
+        candidate = create(:candidate)
+        election = create(:election, candidates: [candidate])
+
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+        Timecop.freeze(election.start_date - 1) do
+          visit election_path(election)
+
+          click_link "Edit"
+
+          expect(current_path).to eq edit_admin_election_path(election)
+
+          fill_in "Topic", with: "New Topic"
+          fill_in "Description", with: "New Description"
+          page.uncheck candidate.full_name
+
+          click_button "Update Election"
+
+          expect(page).to have_content "Election Updated!"
+          expect(page).to have_content "New Topic"
+          expect(page).to have_content "New Description"
+          expect(page).not_to have_content candidate.full_name
+        end
+      end
       it "users cannot edit election" do
         user = create(:user)
         election = create(:election)
