@@ -65,4 +65,5 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'erb2haml'
   gem 'timecop'
+  gem 'faker'
 end
