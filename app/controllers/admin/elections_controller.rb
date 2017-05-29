@@ -14,6 +14,13 @@ class Admin::ElectionsController < Admin::BaseController
     end
   end
 
+  def destroy
+    @election = Election.find(params[:id])
+    @election.destroy
+    flash[:success] = "Election '#{@election.topic}' Deleted!"
+    redirect_to elections_path
+  end
+
   private
 
    def election_params

@@ -15,6 +15,6 @@ class Election < ApplicationRecord
   end
 
   def can_run? (user)
-    user.candidate?
+    user.candidate? && !candidates.include?(user)
   end
 end
