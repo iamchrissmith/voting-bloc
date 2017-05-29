@@ -21,8 +21,18 @@ RSpec.describe "an admin can delete an election" do
   end
 
   context "when the election has started" do
-    xit "the election cannot be deleted" do
+    it "the election cannot be deleted" do
+      admin = create(:admin)
+      election = create(:election)
 
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      Timecop.freeze(election.start_date + 1) do
+        visit elections_path
+
+        expect(current_path).to eq elections_path
+        expect(page).not_to have_link "Delete", admin_election_path(election)
+      end
     end
   end
 
