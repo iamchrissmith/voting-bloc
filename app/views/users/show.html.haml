@@ -1,7 +1,7 @@
 .container.bg-white.page-container
   %h1 Your Profile
   - if current_user.user?
-  %p= link_to "Become a Candidate", user_become_candidate_path(current_user), method: :put
+    %p= link_to "Become a Candidate", user_become_candidate_path(current_user), method: :put
 
   = render partial: "users/role_partials/show/#{current_user.role}"
 
