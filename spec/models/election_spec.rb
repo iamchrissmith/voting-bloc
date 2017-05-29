@@ -66,4 +66,73 @@ RSpec.describe Election, type: :model do
       end
     end
   end
+
+  describe ".can_run?" do
+    it "returns true if election has not started, has not ended, and user is a candidate who is not yet running" do
+      candidate = create(:candidate)
+      election = create(:election)
+
+      Timecop.freeze(election.start_date - 1) do
+        expect(election.can_run?(candidate)).to be true
+      end
+    end
+
+    it "returns false if candidate already running" do
+      candidate = create(:candidate)
+      election = create(:election, candidates: [candidate])
+
+      Timecop.freeze(election.start_date - 1) do
+        expect(election.can_run?(candidate)).to be false
+      end
+    end
+
+    it "returns true if election has not started, has not ended, and user is a candidate who is not yet running" do
+      candidate = create(:candidate)
+      election = create(:election)
+
+      Timecop.freeze(election.start_date + 1) do
+        expect(election.can_run?(candidate)).to be false
+      end
+    end
+
+    it "returns true if election has not started, has not ended, and user is a candidate who is not yet running" do
+      candidate = create(:candidate)
+      election = create(:election)
+
+      Timecop.freeze(election.end_date + 1) do
+        expect(election.can_run?(candidate)).to be false
+      end
+    end
+  end
+
+  describe ".can_be_deleted?" do
+    it "returns true if not started and user is admin" do
+      admin = create(:admin)
+      election = create(:election)
+
+      Timecop.freeze(election.start_date - 1) do
+        expect(election.can_be_deleted?(admin)).to be true
+      end
+    end
+
+    it "returns false if started and user is admin" do
+      admin = create(:admin)
+      election = create(:election)
+
+      Timecop.freeze(election.start_date + 1) do
+        expect(election.can_be_deleted?(admin)).to be false
+      end
+    end
+
+    it "returns false if not started and user is not admin" do
+      candidate = create(:candidate)
+      user = create(:user)
+      election = create(:election)
+
+      Timecop.freeze(election.start_date - 1) do
+        expect(election.can_be_deleted?(candidate)).to be false
+        expect(election.can_be_deleted?(user)).to be false
+      end
+    end
+  end
 end

@@ -15,7 +15,7 @@ class Election < ApplicationRecord
   end
 
   def can_run? (user)
-    user.candidate? && !candidates.include?(user)
+    user.candidate? && !candidates.include?(user) && !started? && !ended?
   end
 
   def can_be_deleted?(user)
