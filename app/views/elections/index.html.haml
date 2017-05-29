@@ -1,7 +1,7 @@
 .container.bg-white.page-container
   %h1 Active Elections
-
-  %p= link_to "New Election", new_admin_election_path
+  - if current_user.admin?
+    %p= link_to "New Election", new_admin_election_path
 
   %table.table.table-striped
     %thead
