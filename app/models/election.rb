@@ -30,6 +30,14 @@ class Election < ApplicationRecord
     not_started_and_admin?(user)
   end
 
+  def vote_status(user)
+    # binding.pry
+    return "not_started" unless started?
+    return "closed" if ended?
+    return "result" if user.has_voted?(self)
+    "vote"
+  end
+
   private
 
    def not_started_and_admin?(user)

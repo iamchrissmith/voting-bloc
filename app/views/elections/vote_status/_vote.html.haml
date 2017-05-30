@@ -1,0 +1,7 @@
+%p Select the candidate you would like to vote for:
+= form_for @vote do |f|
+  = f.hidden_field :voter_id, value: current_user.id
+  = f.hidden_field :election_id, value: @election.id
+  .form-group
+    = f.collection_radio_buttons(:recipient_id, @election.candidates, :id, :full_name)
+  = f.submit "Vote"
