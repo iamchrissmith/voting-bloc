@@ -6,6 +6,10 @@ class Election < ApplicationRecord
   has_many :ballots
   has_many :candidates, through: :ballots, source: :candidate, source_type: "User"
 
+  has_many :votes
+  has_many :recipient, through: :votes, source: :recipient, source_type: "User"
+  has_many :voters, through: :votes, source: :voter, source_type: "User"
+
   def started?
     start_date <= Date.today
   end

@@ -10,9 +10,17 @@
     - @election.candidates.each do |candidate|
       %li.list-group-item
         = candidate.full_name
+
   - if @election.can_be_edited?(current_user)
     %p= link_to "Edit", edit_admin_election_path(@election), {class: "btn btn-primary btn-edit"}
   - if @election.can_be_deleted?(current_user)
     %p= link_to "Delete", admin_election_path(@election), {method: :delete, class: "btn btn-danger btn-delete"}
+
+  %h2 Voting
+  %p "Select the candidate you would like to vote for:"
+  = form_for @vote do |f|
+    = f.hidden_field :voter_id, value: current_user.id
+    = f.collection_radio_buttons(:recipient_ids, @election.candidates, :id, :full_name)
+    = f.submit "Vote"
 
   %p= link_to "All Elections", elections_path

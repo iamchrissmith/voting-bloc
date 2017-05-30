@@ -7,5 +7,6 @@ class ElectionsController < ApplicationController
 
   def show
     @election = Election.find(params[:id])
+    @vote = Vote.new
   end
 end

@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   resources :users, except: [:index, :destroy] do
     put :become_candidate
   end
-  
+
   resources :elections, only: [:index, :show]
+
+  resources :votes, only: [:index]
 
   namespace :admin do
     resources :users, only: [:index, :destroy]
