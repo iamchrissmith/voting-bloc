@@ -10,15 +10,16 @@ RSpec.describe "" do
 
       Timecop.freeze(election.end_date - 1) do
         visit election_path(election)
+        # save_and_open_page
 
         expect(page).to have_content "Select the candidate you would like to vote for:"
-        page.check election.candidates.first.full_name
+        page.choose election.candidates.first.full_name
 
         click_button "Vote"
 
         expect(current_path).to eq election_path(election)
 
-        expect(page).to have_content "You have voted for: #{election.candidates.first.full_name} in this election"
+        expect(page).to have_content "Your Vote has been recorded!"
         expect(page).not_to have_button "Vote"
       end
     end

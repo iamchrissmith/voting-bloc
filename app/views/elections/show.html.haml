@@ -18,9 +18,10 @@
 
   %h2 Voting
   %p "Select the candidate you would like to vote for:"
-  = form_for @vote do |f|
+  = form_for [@election, @vote] do |f|
     = f.hidden_field :voter_id, value: current_user.id
-    = f.collection_radio_buttons(:recipient_ids, @election.candidates, :id, :full_name)
+    .form-group
+      = f.collection_radio_buttons(:recipient_id, @election.candidates, :id, :full_name)
     = f.submit "Vote"
 
   %p= link_to "All Elections", elections_path

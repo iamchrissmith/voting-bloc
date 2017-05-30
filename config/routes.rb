@@ -8,9 +8,10 @@ Rails.application.routes.draw do
     put :become_candidate
   end
 
-  resources :elections, only: [:index, :show]
+  resources :elections, only: [:index, :show] do
+    resources :votes, only: [:index, :create]
+  end
 
-  resources :votes, only: [:index]
 
   namespace :admin do
     resources :users, only: [:index, :destroy]

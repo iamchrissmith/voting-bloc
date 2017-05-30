@@ -6,7 +6,7 @@ FactoryGirl.define do
     candidates []
 
     factory :election_with_candidates, parent: :election do
-      ignore do
+      transient do
         candidate { FactoryGirl.create(:candidate) }
       end
 
