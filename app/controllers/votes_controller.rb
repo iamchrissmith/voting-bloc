@@ -3,10 +3,10 @@ class VotesController < ApplicationController
 
   def create
     @election = Election.find(params[:election_id])
-    @vote = Vote.new(vote_params)
-    @vote.election_id = @election.id
-    binding.pry
-    if @vote.save
+    # @vote = Vote.new(vote_params)
+    # @vote.election_id = @election.id
+    # binding.pry
+    if @election.create_vote(vote_params)
       flash[:success] = "Your Vote has been recorded!"
       redirect_to @election
     else
