@@ -41,9 +41,9 @@ Voting Bloc is a rails application to track and vote in elections build in Ruby 
 
 ## Other Reqs
 - [X] Heroku
-- [ ] Sessions, flashes, and maybe cookies
-- [ ] Authentication
-- [ ] Basic Styling
+- [X] Sessions, flashes, and maybe cookies
+- [X] Authentication
+- [X] Basic Styling
 
 ## Extensions
 - [ ] Twitter, Github, Facebook OAuth login
