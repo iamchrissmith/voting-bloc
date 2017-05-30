@@ -51,3 +51,4 @@ Voting Bloc is a rails application to track and vote in elections build in Ruby 
 - [X] CI
 
 [Database Schema](http://ondras.zarovi.cz/sql/demo/?keyword=chris-mini-project)
+[Heroku App Demo](https://voting-bloc.herokuapp.com/)
