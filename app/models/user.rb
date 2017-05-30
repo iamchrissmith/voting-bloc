@@ -17,6 +17,13 @@ class User < ApplicationRecord
 
   def full_name
     "#{first_name} #{last_name}"
+  end
 
+  def has_voted?(election)
+    votes.pluck(:election_id).include?(election.id)
+  end
+
+  def voted_for(election)
+    votes.where(election_id:election.id).first.recipient.full_name
   end
 end

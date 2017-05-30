@@ -10,7 +10,6 @@ RSpec.describe "" do
 
       Timecop.freeze(election.end_date - 1) do
         visit election_path(election)
-        # save_and_open_page
 
         expect(page).to have_content "Select the candidate you would like to vote for:"
         page.choose election.candidates.first.full_name
@@ -20,12 +19,9 @@ RSpec.describe "" do
         expect(current_path).to eq election_path(election)
 
         expect(page).to have_content "Your Vote has been recorded!"
+        expect(page).to have_content "You voted in this election for: #{election.candidates.first.full_name}"
         expect(page).not_to have_button "Vote"
       end
     end
-  end
-
-  context "when the user has already voted" do
-    it "a user can't vote in an election"
   end
 end

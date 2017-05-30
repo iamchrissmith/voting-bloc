@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530050554) do
+ActiveRecord::Schema.define(version: 20170530141243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,9 +40,9 @@ ActiveRecord::Schema.define(version: 20170530050554) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.string "voter_type"
+    t.string "voter_type", default: "User"
     t.bigint "voter_id"
-    t.string "recipient_type"
+    t.string "recipient_type", default: "User"
     t.bigint "recipient_id"
     t.integer "election_id"
     t.index ["recipient_type", "recipient_id"], name: "index_votes_on_recipient_type_and_recipient_id"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20170530050554) do
 
   add_foreign_key "ballots", "elections"
   add_foreign_key "ballots", "users", column: "candidate_id"
+  add_foreign_key "votes", "elections"
   add_foreign_key "votes", "users", column: "recipient_id"
   add_foreign_key "votes", "users", column: "voter_id"
 end
