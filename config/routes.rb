@@ -9,9 +9,8 @@ Rails.application.routes.draw do
   end
 
   resources :elections, only: [:index, :show]
-  
-  resources :votes, only: [:index, :create]
 
+  resources :votes, only: [:index, :create]
 
   namespace :admin do
     resources :users, only: [:index, :destroy]

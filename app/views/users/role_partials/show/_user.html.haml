@@ -2,8 +2,10 @@
   .col-md-6
     .card
       %h2.card-header Your Voting History
-      .card-block
-        %p Lorem ipsum...
+      - current_user.votes.each do |vote|
+        .card-block
+          %p= "In: #{Election.find(vote.election_id).topic}"
+          %p= "For: #{User.find(vote.recipient_id).full_name}"
   .col-md-6
     .card
       %h2.card-header Your Information

@@ -6,7 +6,7 @@
           %span.glyphicon.glyphicon-briefcase
           Voting Bloc
       - if current_user
-        %li.nav-item= link_to"Upcoming Votes", '#', {class: "nav-link"}
+        %li.nav-item= link_to"Upcoming Votes", elections_path, {class: "nav-link"}
         %li.nav-item= link_to "Your Profile", user_path(current_user), {class: "nav-link"}
     .user-logged-in
       - if current_user
