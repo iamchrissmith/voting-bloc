@@ -10,7 +10,7 @@
         %li.nav-item= link_to "Your Profile", user_path(current_user), {class: "nav-link"}
     .user-logged-in
       - if current_user
-        = "Welcome, #{current_user.full_name}!"
+        = "Welcome, #{full_name(current_user)}!"
         = link_to "Logout", logout_path, method: :delete
       - else
         = link_to "New Account", new_user_path

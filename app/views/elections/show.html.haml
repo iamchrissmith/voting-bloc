@@ -9,7 +9,7 @@
   %ul.list-group
     - @election.candidates.each do |candidate|
       %li.list-group-item
-        = candidate.full_name
+        = full_name(candidate)
 
   - if @election.can_be_edited?(current_user)
     %p= link_to "Edit", edit_admin_election_path(@election), {class: "btn btn-primary btn-edit"}

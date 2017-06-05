@@ -12,7 +12,7 @@
     %tbody
       - @users.each do |user|
         %tr
-          %td= user.full_name
+          %td= full_name(user)
           %td= user.email
           %td= user.role
           %td= link_to "View", user, {class: "btn btn-secondary btn-view disabled"}

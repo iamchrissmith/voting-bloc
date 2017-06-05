@@ -5,7 +5,7 @@
       - current_user.votes.each do |vote|
         .card-block
           %p= "In: #{Election.find(vote.election_id).topic}"
-          %p= "For: #{User.find(vote.recipient_id).full_name}"
+          %p= "For: #{full_name(User.find(vote.recipient_id))}"
   .col-md-6
     .card
       %h2.card-header Your Information

@@ -17,7 +17,7 @@ RSpec.describe "candidates can run in an election" do
 
           expect(current_path).to eq election_path(election)
           expect(page).to have_content "You are now running in this election!"
-          expect(page).to have_content candidate.full_name
+          expect(page).to have_content full_name(candidate)
         end
       end
     end

@@ -1,4 +1,5 @@
 class Admin::UsersController < Admin::BaseController
+  include ApplicationHelper
   def index
     @users = User.all
   end
@@ -6,7 +7,7 @@ class Admin::UsersController < Admin::BaseController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    flash[:success] = "#{@user.full_name} was successfully deleted."
+    flash[:success] = "#{full_name(@user)} was successfully deleted."
     redirect_to admin_users_path
   end
 end

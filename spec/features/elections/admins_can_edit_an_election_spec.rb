@@ -19,14 +19,14 @@ RSpec.describe "an admin can edit an election" do
 
           fill_in "Topic", with: "New Topic"
           fill_in "Description", with: "New Description"
-          page.check candidate.full_name
+          page.check full_name(candidate)
 
           click_button "Update Election"
 
           expect(page).to have_content "Election Updated!"
           expect(page).to have_content "New Topic"
           expect(page).to have_content "New Description"
-          expect(page).to have_content candidate.full_name
+          expect(page).to have_content full_name(candidate)
         end
       end
       it "users cannot edit election" do
@@ -75,14 +75,14 @@ RSpec.describe "an admin can edit an election" do
 
           fill_in "Topic", with: "New Topic"
           fill_in "Description", with: "New Description"
-          page.uncheck candidate.full_name
+          page.uncheck full_name(candidate)
 
           click_button "Update Election"
 
           expect(page).to have_content "Election Updated!"
           expect(page).to have_content "New Topic"
           expect(page).to have_content "New Description"
-          expect(page).not_to have_content candidate.full_name
+          expect(page).not_to have_content full_name(candidate)
         end
       end
       it "users cannot edit election" do

@@ -28,7 +28,7 @@ RSpec.describe "an admin can delete a user" do
     click_on "Delete"
 
     expect(page).to have_content "All Users"
-    expect(page).to have_content "#{candidate.full_name} was successfully deleted."
+    expect(page).to have_content "#{full_name(candidate)} was successfully deleted."
     expect(page).not_to have_content candidate.email
     expect(page).to have_content admin.email
   end

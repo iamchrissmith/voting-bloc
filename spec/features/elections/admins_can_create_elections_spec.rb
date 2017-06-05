@@ -17,9 +17,9 @@ RSpec.describe "an admin can create an election" do
     fill_in "End date", with: "2017-06-30"
     fill_in "Topic", with: "Test Election"
     fill_in "Description", with: "Lorem Ipsum..."
-    page.check candidate_1.full_name
+    page.check full_name(candidate_1)
 
-    expect(page).not_to have_content user_1.full_name
+    expect(page).not_to have_content full_name(user_1)
 
     click_button "Create Election"
 
