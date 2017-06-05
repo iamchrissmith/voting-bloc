@@ -38,6 +38,18 @@ class Election < ApplicationRecord
     "vote"
   end
 
+  def winner_with_votes
+    winner = votes.group(:recipient_id).order('count_all DESC').count.take(1)
+    User.find(winner.first)
+  end
+
+  def results
+    results = votes.group(:recipient_id).order('count_all DESC').count
+    results.map do |candidate_id, votes|
+      [User.find(candidate_id), votes]
+    end
+  end
+
   private
 
    def not_started_and_admin?(user)

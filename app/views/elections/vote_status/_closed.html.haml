@@ -1,3 +1,6 @@
 %p This election is closed.
 - if current_user.has_voted?(@election)
   = render "elections/vote_status/result"
+%h3 All Results:
+- @election.results.each do |result|
+  %p #{full_name result[0] }: #{result[1]}
