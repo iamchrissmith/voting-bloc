@@ -31,7 +31,6 @@ class Election < ApplicationRecord
   end
 
   def vote_status(user)
-    # binding.pry
     return "not_started" unless started?
     return "closed" if ended?
     return "result" if user.has_voted?(self)
@@ -39,15 +38,13 @@ class Election < ApplicationRecord
   end
 
   def winner_with_votes
-    winner = votes.group(:recipient_id).order('count_all DESC').count.take(1)
-    User.find(winner.first)
+    winner  = results.take(1)
   end
 
   def results
-    results = votes.group(:recipient_id).order('count_all DESC').count
-    results.map do |candidate_id, votes|
-      [User.find(candidate_id), votes]
-    end
+    results = votes.joins('INNER JOIN users on users.id = votes.recipient_id')
+                   .group("(users.first_name || ' ' || users.last_name)")
+                   .order('count_all DESC').count
   end
 
   private
