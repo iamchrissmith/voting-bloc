@@ -1,0 +1,6 @@
+%h3 All Results:
+- if @election.results.empty?
+  %p No votes for this election
+- else
+  - @election.results.each do |result|
+    %p #{result[0]}: #{result[1]}

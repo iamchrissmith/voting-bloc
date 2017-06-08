@@ -2,7 +2,6 @@ class ElectionsController < ApplicationController
   before_action :require_user
 
   def index
-    # binding.pry
     if params[:elections] == "upcoming"
       @title = "Upcoming Elections"
       @elections = Election.upcoming_elections
