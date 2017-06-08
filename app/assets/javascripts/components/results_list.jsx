@@ -1,8 +1,8 @@
 const ResultsList = ({results}) =>
   <div>
-    {results.map(function(result) {
+    {results.results.map(function(result) {
       return (
-        <Result result={result} key={result}/>
+        <Result result={result} key={result.first}/>
       )
     })}
   </div>

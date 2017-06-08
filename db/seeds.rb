@@ -10,13 +10,13 @@ users = []
   users << User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    email: Faker::Internet.email,
-    password: '123abc'
+    email: "user#{num}",
+    password: 'user'
   )
 end
 
 candidates = []
-2.times do |num|
+4.times do |num|
   candidates << User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -37,11 +37,11 @@ past_elections = []
   )
   past_elections << election
 
-  election.votes << Vote.create!(
-    user_id: users.shuffle.first.id
-    recipient_id: candidates.shuffle.first.id
-    election:
-  )
+  # election.votes << Vote.create!(
+  #   user_id: users.shuffle.first.id
+  #   recipient_id: candidates.shuffle.first.id
+  #   election:
+  # )
 end
 # binding.pry
 
@@ -62,9 +62,9 @@ upcoming_election = Election.create!(
 )
 
 admin = User.create!(
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
-  email: 'admin@admin.com',
-  password: 'admin123abc',
+  first_name: 'admin',
+  last_name: 'admin',
+  email: 'admin',
+  password: 'admin',
   role: 2
 )

@@ -3,16 +3,21 @@ class VotesController < ApplicationController
 
   def create
     # @election = Election.find(params[:election_id])
-    @vote = Vote.create(vote_params)
-    if @vote.save
-      flash[:success] = "Your Vote has been recorded!"
-      # redirect_to @vote.election
-      render json: @vote.election
-    else
-      flash[:error] = "There was a problem, please try again"
-      # redirect_to @vote.election
-      render json: @vote.election.errors, status: :unprocessable_entity
-    end
+    @vote = Vote.create!(vote_params)
+    # if @vote.save
+    #   # ActionCable.server.broadcast 'results',
+    #   #   results: @vote.election.results
+    #   #   # message: message.body,
+    #   #   # user: message.user.first_name
+    #   # head :ok
+    #   flash[:success] = "Your Vote has been recorded!"
+    #   # redirect_to @vote.election
+    #   # render json: @vote.election
+    # else
+    #   flash[:error] = "There was a problem, please try again"
+    #   redirect_to @vote.election
+    #   # render json: @vote.election.errors, status: :unprocessable_entity
+    # end
   end
 
   private

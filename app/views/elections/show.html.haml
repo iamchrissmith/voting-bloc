@@ -17,7 +17,8 @@
     %p= link_to "Delete", admin_election_path(@election), {method: :delete, class: "btn btn-danger btn-delete"}
 
   %h2 Voting
-  = render "elections/vote_status/#{@election.vote_status(current_user)}"
+  #voting
+    = render "elections/vote_status/#{@election.vote_status(current_user)}", election: @election
   -# = react_component 'Voting', { user: current_user,
   -#                               vote_status: @election.vote_status(current_user),
   -#                               election: @election,

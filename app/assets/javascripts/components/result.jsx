@@ -1,4 +1,4 @@
 const Result = ({result}) =>
   <div>
-    <p>{result[0]} - {result[1]}</p>
+    <p>{result.first} - {result.last}</p>
   </div>
