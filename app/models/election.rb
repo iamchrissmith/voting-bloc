@@ -45,6 +45,7 @@ class Election < ApplicationRecord
     results = votes.joins('INNER JOIN users on users.id = votes.recipient_id')
                    .group("(users.first_name || ' ' || users.last_name)")
                    .order('count_all DESC').count
+    results.to_a
   end
 
   def self.upcoming_elections

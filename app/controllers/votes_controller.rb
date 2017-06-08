@@ -6,10 +6,12 @@ class VotesController < ApplicationController
     @vote = Vote.create(vote_params)
     if @vote.save
       flash[:success] = "Your Vote has been recorded!"
-      redirect_to @vote.election
+      # redirect_to @vote.election
+      render json: @vote.election
     else
       flash[:error] = "There was a problem, please try again"
-      redirect_to @vote.election
+      # redirect_to @vote.election
+      render json: @vote.election.errors, status: :unprocessable_entity
     end
   end
 

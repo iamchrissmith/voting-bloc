@@ -2,5 +2,6 @@
 - if @election.results.empty?
   %p No votes for this election
 - else
-  - @election.results.each do |result|
-    %p #{result[0]}: #{result[1]}
+  = react_component "Results", results: @election.results
+  -# - @election.results.each do |result|
+  -#   %p #{result[0]}: #{result[1]}

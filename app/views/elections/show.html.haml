@@ -18,6 +18,10 @@
 
   %h2 Voting
   = render "elections/vote_status/#{@election.vote_status(current_user)}"
-
-
+  -# = react_component 'Voting', { user: current_user,
+  -#                               vote_status: @election.vote_status(current_user),
+  -#                               election: @election,
+  -#                               results: @election.results,
+  -#                               candidates: @election.candidates
+  -#                             }
   %p= link_to "Active Elections", elections_path
