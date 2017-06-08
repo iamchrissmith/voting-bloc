@@ -47,6 +47,18 @@ class Election < ApplicationRecord
                    .order('count_all DESC').count
   end
 
+  def self.upcoming_elections
+    Election.where('start_date > ?', Date.today)
+  end
+
+  def self.past_elections
+    Election.where('end_date < ?', Date.today)
+  end
+
+  def self.active_elections
+    Election.where('start_date < ? AND end_date > ?', Date.today, Date.today)
+  end
+
   private
 
    def not_started_and_admin?(user)

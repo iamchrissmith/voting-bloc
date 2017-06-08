@@ -2,6 +2,10 @@
   %h1 Active Elections
   - if current_user.admin?
     %p= link_to "New Election", new_admin_election_path
+  %p= link_to "Active Elections", elections_path
+  %p= link_to "Upcoming Elections", elections_path(elections: 'upcoming')
+  %p= link_to "Past Elections", elections_path(elections: 'past')
+
 
   %table.table.table-striped
     %thead
