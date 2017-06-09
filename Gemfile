@@ -20,6 +20,7 @@ gem 'figaro'
 gem 'react-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'faker'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
@@ -46,5 +47,4 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'erb2haml'
   gem 'timecop'
-  gem 'faker'
 end
