@@ -5,7 +5,7 @@
   "description": "[![Build Status](https://semaphoreci.com/api/v1/iamchrissmith/voting-bloc/branches/master/badge.svg)](https://semaphoreci.com/iamchrissmith/voting-bloc)",
   "version": "1.0.0",
   "devDependencies": {},
-  "scripts": { "postinstall": "cd client && npm install" },
+  "scripts": { "postinstall": "npm install" },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/iamchrissmith/voting-bloc.git"
