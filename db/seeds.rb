@@ -43,7 +43,6 @@ past_elections = []
   #   election:
   # )
 end
-# binding.pry
 
 
 active_election = Election.create!(
