@@ -12,26 +12,30 @@ class Results extends React.Component {
   }
 
   updateResults(result) {
-    const results = React.addons.update(this.state.results, { $push: [result]});
+    console.log(result.results)
     this.setState({
-      results: results.sort(function(a,b){
-        return a - b;
-      })
-    });
+      results:result
+    })
+    // const results = React.addons.update(this.state.results, { $push:[result.results]});
+    // this.setState({
+    //   results: results.sort(function(a,b){
+    //     return a - b;
+    //   })
+    // });
   }
 
   setupSubscription(){
     App.results = App.cable.subscriptions.create("ResultsChannel", {
-      result_id: this.state.result,
+      results: this.state.results,
       connected: function(){
-        setTimeout(() => this.perform('follow', {result_id: this.result_id}), 1000);
+        setTimeout(() => this.perform('follow', {results: this.results.results}), 1000);
       },
 
       received: function(data) {
-        this.updateResults(data.result);
+        this.updateResults(JSON.parse(data.result));
       },
 
-      updateResults: this.updateResults
+      updateResults: this.updateResults.bind(this)
     });
   }
 

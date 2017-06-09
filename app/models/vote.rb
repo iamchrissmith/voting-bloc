@@ -3,5 +3,5 @@ class Vote < ApplicationRecord
   belongs_to :voter, polymorphic: true
   belongs_to :recipient, polymorphic: true
 
-  # after_commit { ElectionRelayJob.perform_later(self.message) }
+  after_commit { ElectionRelayJob.perform_later(self) }
 end

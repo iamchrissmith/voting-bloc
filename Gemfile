@@ -19,6 +19,7 @@ gem 'haml', '~> 5.0'
 gem 'figaro'
 gem 'react-rails'
 gem 'jquery-rails'
+gem 'turbolinks'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
