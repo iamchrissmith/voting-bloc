@@ -5,7 +5,8 @@
   "description": "[![Build Status](https://semaphoreci.com/api/v1/iamchrissmith/voting-bloc/branches/master/badge.svg)](https://semaphoreci.com/iamchrissmith/voting-bloc)",
   "version": "1.0.0",
   "devDependencies": {},
-  "scripts": { "postinstall": "npm install" },
+  "scripts": { "postinstall": "rails webpacker:install && rails webpacker:install:react
+ && rails generate react:install" },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/iamchrissmith/voting-bloc.git"
