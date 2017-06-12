@@ -22,6 +22,7 @@ gem 'haml', '~> 5.0'
 gem 'react-rails'
 gem 'jquery-rails'
 gem 'faker'
+gem 'redis'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
