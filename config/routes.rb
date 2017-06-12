@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  # Serve websocket cable requests in-process
+  mount ActionCable.server => '/cable'
+
   root to: 'sessions#new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

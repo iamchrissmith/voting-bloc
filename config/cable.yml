@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://redistogo:cbb991965e2b8c72899cfa9a310e822e@koi.redistogo.com:11490/
   channel_prefix: voting-bloc2_production
