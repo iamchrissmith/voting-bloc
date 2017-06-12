@@ -1,0 +1,22 @@
+.container.bg-white.page-container
+  %h1 All Users
+
+  %table.table.table-striped
+    %thead
+      %tr.thead-inverse
+        %th Name
+        %th Email
+        %th Type
+        %th
+        %th
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= full_name(user)
+          %td= user.email
+          %td= user.role
+          %td= link_to "View", user, {class: "btn btn-secondary btn-view disabled"}
+          - if user == current_user
+            %td= link_to "Edit", edit_user_path(user), {class: "btn btn-primary btn-edit"}
+          - else
+            %td= link_to "Delete", admin_user_path(user), {method: :delete, class: "btn btn-danger btn-delete"}

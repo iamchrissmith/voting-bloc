@@ -1,0 +1,8 @@
+%h3 All Results:
+- if election.results.empty?
+  %p No votes for this election
+- else
+  = react_component "Results", results: render(partial:'elections/results.json', locals: {election: election.results})
+  -# = react_component "Results", results: @election.results
+  -# - @election.results.each do |result|
+  -#   %p #{result[0]}: #{result[1]}

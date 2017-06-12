@@ -1,0 +1,28 @@
+.container.bg-white.page-container
+  %h1= @election.topic
+
+  %p= @election.description
+
+  %h2 Candidates
+  - if @election.can_run?(current_user)
+    %p= link_to "Run in this Election", {controller: "candidates/elections", action: "update", user_id: current_user.id}, {method: :post}
+  %ul.list-group
+    - @election.candidates.each do |candidate|
+      %li.list-group-item
+        = full_name(candidate)
+
+  - if @election.can_be_edited?(current_user)
+    %p= link_to "Edit", edit_admin_election_path(@election), {class: "btn btn-primary btn-edit"}
+  - if @election.can_be_deleted?(current_user)
+    %p= link_to "Delete", admin_election_path(@election), {method: :delete, class: "btn btn-danger btn-delete"}
+
+  %h2 Voting
+  #voting
+    = render "elections/vote_status/#{@election.vote_status(current_user)}", election: @election
+  -# = react_component 'Voting', { user: current_user,
+  -#                               vote_status: @election.vote_status(current_user),
+  -#                               election: @election,
+  -#                               results: @election.results,
+  -#                               candidates: @election.candidates
+  -#                             }
+  %p= link_to "Active Elections", elections_path

@@ -1,0 +1,4 @@
+%p This election is closed.
+- if current_user.has_voted?(@election)
+  = render "elections/vote_status/result"
+= render 'elections/all_results'

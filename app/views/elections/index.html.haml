@@ -1,0 +1,31 @@
+.container.bg-white.page-container
+  %h1 Active Elections
+  - if current_user.admin?
+    %p= link_to "New Election", new_admin_election_path
+  %p= link_to "Active Elections", elections_path
+  %p= link_to "Upcoming Elections", elections_path(elections: 'upcoming')
+  %p= link_to "Past Elections", elections_path(elections: 'past')
+
+
+  %table.table.table-striped
+    %thead
+      %tr.thead-inverse
+        %th Topic
+        %th Start Date
+        %th End Date
+        %th
+        %th
+        %th
+    %tbody
+      - @elections.each do |election|
+        %tr
+          %td= election.topic
+          %td= election.start_date
+          %td= election.end_date
+          %td= link_to "View", election, {class: "btn btn-secondary btn-view"}
+          %td
+            - if election.can_be_edited?(current_user)
+              = link_to "Edit", edit_admin_election_path(election), {class: "btn btn-primary btn-edit"}
+          %td
+            - if election.can_be_deleted?(current_user)
+              = link_to "Delete", admin_election_path(election), {method: :delete, class: "btn btn-danger btn-delete"}

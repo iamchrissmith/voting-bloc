@@ -1,0 +1,4 @@
+%p= "You voted in this election for: #{current_user.voted_for(election)}"
+
+- if current_user.admin?
+  = render 'elections/all_results', election: election

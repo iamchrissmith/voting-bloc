@@ -45,4 +45,5 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'erb2haml'
   gem 'rubocop'
+  gem 'timecop'
 end
