@@ -8,8 +8,7 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   %body.container
-    .container
-      =render "shared/nav"
+    =render "shared/nav"
 
     .container
       - flash.each do |type, message|

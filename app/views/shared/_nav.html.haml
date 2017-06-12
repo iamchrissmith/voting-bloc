@@ -1,14 +1,21 @@
-%nav.navbar.navbar-toggleable-md.navbar-inverse.bg-inverse.fixed-top
-  .navbar-header.container
-    %ul.nav.navbar-nav.mr-auto
-      %li.nav-item
-        = link_to root_path, {class: "navbar-brand nav-link"} do
-          %span.glyphicon.glyphicon-briefcase
-          Voting Bloc
+%nav.navbar.navbar-toggleable-md.navbar-inverse.bg-inverse
+  %button{class:"navbar-toggler navbar-toggler-right",
+          type:"button",
+          data: {"toggle":"collapse",
+                 "target":"#navbarNav"},
+          aria: {"controls":"navbarNav",
+                 "expanded":"false",
+                 "label":"Toggle navigation"}}
+    %span.navbar-toggler-icon
+  = link_to root_path, {class: "navbar-brand"} do
+    %span.glyphicon.glyphicon-briefcase
+    Voting Bloc
+  .collapse.navbar-collapse#navbarNav
+    %ul.navbar-nav
       - if current_user
         %li.nav-item= link_to"Upcoming Votes", elections_path, {class: "nav-link"}
         %li.nav-item= link_to "Your Profile", user_path(current_user), {class: "nav-link"}
-    .user-logged-in
+    .user-logged-in.my-2.my-lg-0
       - if current_user
         = "Welcome, #{full_name(current_user)}!"
         = link_to "Logout", logout_path, method: :delete
