@@ -1,0 +1,14 @@
+.row
+  .col-md-6
+    .card
+      %h2.card-header Your Voting History
+      - current_user.votes.each do |vote|
+        .card-block
+          %p= "In: #{Election.find(vote.election_id).topic}"
+          %p= "For: #{full_name(User.find(vote.recipient_id))}"
+  .col-md-6
+    .card
+      %h2.card-header Your Information
+      .card-block
+        %ul
+          %li= "Email: #{current_user.email}"

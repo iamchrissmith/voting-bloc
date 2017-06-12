@@ -1,0 +1,4 @@
+= form_for @user do |f|
+  = render partial: "shared/errors", locals: { target: @user }
+  = render partial: "users/role_partials/edit/#{@user.role}", locals: {:f=> f}
+  = f.submit
