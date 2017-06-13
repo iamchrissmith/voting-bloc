@@ -19,10 +19,11 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'haml', '~> 5.0'
-gem 'react-rails'
 gem 'jquery-rails'
 gem 'faker'
 gem 'redis'
+gem 'webpacker', '~> 2.0'
+gem 'webpacker-react', "~> 0.3.1"
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
@@ -47,4 +48,5 @@ group :development, :test do
   gem 'erb2haml'
   gem 'rubocop'
   gem 'timecop'
+  gem 'foreman'
 end

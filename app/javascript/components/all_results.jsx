@@ -1,4 +1,8 @@
-// import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
+import React from 'react'
+import ResultsList from './results_list'
+// import { VictoryBar, VictoryChart, VictoryAxis } from 'victory'
+// import ReactDOM from 'react-dom'
+// import PropTypes from 'prop-types'
 
 class Results extends React.Component {
   constructor (props) {
@@ -69,3 +73,5 @@ class Results extends React.Component {
     )
   }
 }
+
+export default Results;

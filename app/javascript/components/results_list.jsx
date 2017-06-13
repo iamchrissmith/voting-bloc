@@ -1,3 +1,6 @@
+import React from 'react'
+import Result from './result'
+
 const ResultsList = ({results}) =>
   <div>
     {results.results.map(function(result) {
@@ -6,3 +9,5 @@ const ResultsList = ({results}) =>
       )
     })}
   </div>
+  
+export default ResultsList
