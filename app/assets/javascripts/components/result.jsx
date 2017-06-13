@@ -1,4 +1,4 @@
 const Result = ({result}) =>
   <div>
-    <p>{result.first} - {result.last}</p>
+    <p>{result.candidate}: {result.votes} votes</p>
   </div>

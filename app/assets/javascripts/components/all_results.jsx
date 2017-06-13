@@ -1,3 +1,5 @@
+// import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
+
 class Results extends React.Component {
   constructor (props) {
     super(props)
@@ -12,7 +14,7 @@ class Results extends React.Component {
   }
 
   updateResults(result) {
-    console.log(result.results)
+    // console.log(result.results)
     this.setState({
       results:result
     })
@@ -40,6 +42,26 @@ class Results extends React.Component {
   }
 
   render () {
+    console.log(this.state.results);
+    // return (
+    //   <VictoryChart
+    //     // domainPadding will add space to each side of VictoryBar to
+    //     // prevent it from overlapping the axis
+    //     domainPadding={20}
+    //   >
+    //     <VictoryAxis
+    //       // tickValues specifies both the number of ticks and where
+    //       // they are placed on the axis
+    //       tickValues={this.state.results.keys}
+    //       tickFormat={this.state.results.keys}
+    //     />
+    //     <VictoryBar
+    //       data={this.state.results}
+    //       x="candidate"
+    //       y="votes"
+    //     />
+    //   </VictoryChart>
+    // )
     return (
       <div>
         <ResultsList results={this.state.results} />

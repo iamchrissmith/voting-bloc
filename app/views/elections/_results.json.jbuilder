@@ -1,5 +1,4 @@
-# json.(election), :first, :last)
-# binding.pry
 json.results(election) do |result|
-  json.extract! result, :first, :last
+  json.candidate result.first
+  json.votes result.last
 end
