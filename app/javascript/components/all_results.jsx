@@ -1,6 +1,6 @@
 import React from 'react'
 import ResultsList from './results_list'
-import { VictoryPie, VictoryLabel, VictoryLegend } from 'victory'
+import { VictoryPie, VictoryLabel, VictoryLegend, VictoryTheme } from 'victory'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
@@ -73,33 +73,25 @@ class Results extends React.Component {
     //   </VictoryChart>
     // )
     return (
-      <svg viewBox="0 0 400 400" >
+      <svg viewBox="0 0 500 500" >
         <VictoryPie
           standalone={false}
-          width={400} height={400}
-          innerRadius={70} labelRadius={100}
+          width={500} height={500}
+          innerRadius={50} labelRadius={95}
+          theme={VictoryTheme.material}
           data={this.state.results.results}
           x="name"
           y="votes"
-          labels={(datum) => datum.x + ": " + datum.y}
-          style={{ labels: { fontSize: 15, fill: "white"}}}
+          labels={(datum) => datum.x.split(" ")[0] + "\n" + datum.x.split(" ")[1] + "\n" + datum.y + " Vote/s"}
+          style={{ labels: { fontSize: 17, fill: "black"}}}
         />
-        <circle cx="200" cy="200" r="65" fill="none" stroke="black" strokeWidth={3}/>
-        <circle cx="200" cy="200" r="155" fill="none" stroke="black" strokeWidth={3}/>
+        <circle cx="250" cy="250" r="45" fill="none" stroke="black" strokeWidth={3}/>
+        <circle cx="250" cy="250" r="205" fill="none" stroke="black" strokeWidth={3}/>
         <VictoryLabel
           textAnchor="middle" verticalAnchor="middle"
-          x={200} y={200}
+          x={250} y={250}
           style={{fontSize: 30}}
           text="Votes"
-        />
-        <VictoryLegend
-          data={this.state.results.results}
-          labelComponent={
-            <VictoryLabel
-              data={this.state.results.results}
-              text={(datum) => console.log(datum)}
-            />
-          }
         />
       </svg>
     )

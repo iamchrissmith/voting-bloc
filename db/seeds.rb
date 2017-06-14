@@ -67,3 +67,18 @@ admin = User.create!(
   password: 'admin',
   role: 2
 )
+
+admin2 = User.create!(
+  first_name: 'admin',
+  last_name: 'admin',
+  email: 'admin@admin.com',
+  password: 'admin',
+  role: 2
+)
+
+demo_user = User.create!(
+  first_name: 'demo',
+  last_name: 'demo',
+  email: 'demo@demo.com',
+  password: 'demo'
+)

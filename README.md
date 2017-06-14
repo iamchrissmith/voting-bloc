@@ -3,6 +3,12 @@
 [![Build Status](https://semaphoreci.com/api/v1/iamchrissmith/voting-bloc/branches/master/badge.svg)](https://semaphoreci.com/iamchrissmith/voting-bloc)
 
 [Heroku App Demo](https://voting-bloc2.herokuapp.com/)
+Demo User Account:  
+email: demo@demo.com  
+password: demo
+Demo Admin Account:  
+email: admin@admin.com  
+password: admin  
 
 Voting Bloc is a rails application to track and vote in elections build in Ruby on Rails with React mixed in.  It was built to the following specifications.
 
