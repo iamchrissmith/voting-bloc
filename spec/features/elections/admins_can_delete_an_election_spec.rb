@@ -12,6 +12,8 @@ RSpec.describe "an admin can delete an election" do
         Timecop.freeze(election.start_date - 1) do
           visit elections_path
 
+          click_link "Upcoming Elections"
+
           click_link "Delete"
 
           expect(current_path).to eq elections_path
