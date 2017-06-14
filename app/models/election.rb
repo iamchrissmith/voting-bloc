@@ -38,7 +38,7 @@ class Election < ApplicationRecord
   end
 
   def winner_with_votes
-    winner  = results.take(1)
+    results.take(1)[0]
   end
 
   def results
