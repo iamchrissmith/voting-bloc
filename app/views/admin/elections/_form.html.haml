@@ -14,5 +14,8 @@
     = f.text_area :description
   .form-group
     %p Select Candidates to Participate:
-    = f.collection_check_boxes(:candidate_ids, @candidates, :id, :full_name)
+    %ul.list-unstyled.form-check
+      = f.collection_check_boxes(:candidate_ids, @candidates, :id, :full_name) do |b|
+        %li
+        = b.label(class: "form-check-label") { b.check_box(class: "form-check-input") + " #{b.text}" }
   = f.submit

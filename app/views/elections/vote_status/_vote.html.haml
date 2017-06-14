@@ -3,7 +3,10 @@
   = f.hidden_field :voter_id, value: current_user.id
   = f.hidden_field :election_id, value: @election.id
   .form-group
-    = f.collection_radio_buttons(:recipient_id, @election.candidates, :id, :full_name)
+    %ul.list-unstyled.form-check
+      = f.collection_radio_buttons(:recipient_id, @election.candidates, :id, :full_name) do |b|
+        %li
+        = b.label(class: "form-radio-label") { b.radio_button(class: "form-radio-input") + " #{b.text}" }
   = f.submit "Vote"
 
 - if current_user.admin?
