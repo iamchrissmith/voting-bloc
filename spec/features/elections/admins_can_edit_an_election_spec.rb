@@ -13,6 +13,8 @@ RSpec.describe "an admin can edit an election" do
         Timecop.freeze(election.start_date - 1) do
           visit elections_path
 
+          click_link "Upcoming Elections"
+
           click_link "Edit"
 
           expect(current_path).to eq edit_admin_election_path(election)
