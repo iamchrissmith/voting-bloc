@@ -1,8 +1,8 @@
 import React from 'react'
 import ResultsList from './results_list'
-// import { VictoryBar, VictoryChart, VictoryAxis } from 'victory'
-// import ReactDOM from 'react-dom'
-// import PropTypes from 'prop-types'
+import { VictoryPie, VictoryLabel, VictoryLegend } from 'victory'
+import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
 
 class Results extends React.Component {
   constructor (props) {
@@ -59,18 +59,55 @@ class Results extends React.Component {
     //       tickValues={this.state.results.keys}
     //       tickFormat={this.state.results.keys}
     //     />
+    //     <VictoryAxis
+    //       dependentAxis
+    //       tickValues={this.state.results.values}
+    //       tickFormat={(tick) => parseInt(tick)}
+    //       tickCount={this.state.results.results.length}
+    //     />
     //     <VictoryBar
-    //       data={this.state.results}
+    //       data={this.state.results.results}
     //       x="candidate"
     //       y="votes"
     //     />
     //   </VictoryChart>
     // )
     return (
-      <div>
-        <ResultsList results={this.state.results} />
-      </div>
+      <svg viewBox="0 0 400 400" >
+        <VictoryPie
+          standalone={false}
+          width={400} height={400}
+          innerRadius={70} labelRadius={100}
+          data={this.state.results.results}
+          x="name"
+          y="votes"
+          labels={(datum) => datum.x + ": " + datum.y}
+          style={{ labels: { fontSize: 15, fill: "white"}}}
+        />
+        <circle cx="200" cy="200" r="65" fill="none" stroke="black" strokeWidth={3}/>
+        <circle cx="200" cy="200" r="155" fill="none" stroke="black" strokeWidth={3}/>
+        <VictoryLabel
+          textAnchor="middle" verticalAnchor="middle"
+          x={200} y={200}
+          style={{fontSize: 30}}
+          text="Votes"
+        />
+        <VictoryLegend
+          data={this.state.results.results}
+          labelComponent={
+            <VictoryLabel
+              data={this.state.results.results}
+              text={(datum) => console.log(datum)}
+            />
+          }
+        />
+      </svg>
     )
+    // return (
+    //   <div>
+    //     <ResultsList results={this.state.results} />
+    //   </div>
+    // )
   }
 }
 
