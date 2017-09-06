@@ -4,6 +4,7 @@
 
 [Heroku App Demo](https://voting-bloc2.herokuapp.com/)  
 [Database Schema](http://ondras.zarovi.cz/sql/demo/?keyword=chris-mini-project)
+
 Demo User Account:  
 email: demo@demo.com  
 password: demo  
