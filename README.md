@@ -2,15 +2,23 @@
 
 [![Build Status](https://semaphoreci.com/api/v1/iamchrissmith/voting-bloc/branches/master/badge.svg)](https://semaphoreci.com/iamchrissmith/voting-bloc)
 
-[Heroku App Demo](https://voting-bloc2.herokuapp.com/)
+[Heroku App Demo](https://voting-bloc2.herokuapp.com/)  
+[Database Schema](http://ondras.zarovi.cz/sql/demo/?keyword=chris-mini-project)
 Demo User Account:  
 email: demo@demo.com  
-password: demo
+password: demo  
+
 Demo Admin Account:  
 email: admin@admin.com  
 password: admin  
 
-Voting Bloc is a rails application to track and vote in elections build in Ruby on Rails with React mixed in.  It was built to the following specifications.
+Voting Bloc is a rails application to track and vote in elections build in Ruby on Rails with React Component mixed in.  
+
+It was built to allow users to vote in election.  Administrators view the results of elections as they are submitted (using React and ActionCable).
+
+Users can also chose to run in an election by becoming a candidate and then selecting the eletion they want to run in.
+
+Goals Accomplished in this project:
 
 ## Users
 - [X] There are three user roles: admin, candidates and users
@@ -30,7 +38,7 @@ Voting Bloc is a rails application to track and vote in elections build in Ruby 
    - [X] In creating/editing an election, admins can add candidates to the ballot
 
 ## Elections
-- [ ] Multiple elections can be added, voted in and have their results reported
+~- [ ] Multiple elections can be added, voted in and have their results reported~
 - [X] Elections should consist of candidates (i.e. a user role)
 - [X] All users should only be able to vote once in each election
 - [X] Once they have voted, users should be able to see how they voted
@@ -41,11 +49,11 @@ Voting Bloc is a rails application to track and vote in elections build in Ruby 
 
 ## Analytics
 - [X] During an election admins can monitor voting results
-- [ ] After an election all users can see:
+~- [ ] After an election all users can see:
  - [ ] Election turn out (number of votes verse eligible voters)
  - [ ] Election results (votes per candidate in descending order)
  - [ ] Candidates can see their results across elections
- - [ ] Users can see their participation across elections
+ - [ ] Users can see their participation across elections~
 
 ## Other Reqs
 - [X] Heroku
@@ -54,8 +62,7 @@ Voting Bloc is a rails application to track and vote in elections build in Ruby 
 - [X] Basic Styling
 
 ## Extensions
-- [ ] Twitter, Github, Facebook OAuth login
+~- [ ] Twitter, Github, Facebook OAuth login~
 - [X] React Integration
 - [X] Continuous Integration with Semaphore
 
-[Database Schema](http://ondras.zarovi.cz/sql/demo/?keyword=chris-mini-project)
